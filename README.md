@@ -18,3 +18,42 @@ View your app in AI Studio: https://ai.studio/apps/6e9b3df8-8700-494e-b302-ccbcc
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+
+## Deploy to Google Cloud Run
+
+This repository includes container configuration for Cloud Run.
+
+### Build locally
+
+```bash
+docker build -t anwaccounting .
+```
+
+### Run locally
+
+```bash
+docker run --rm -p 8080:8080 anwaccounting
+```
+
+### Deploy with gcloud
+
+```bash
+gcloud run deploy anwaccounting \
+  --source . \
+  --region <YOUR_REGION> \
+  --platform managed \
+  --allow-unauthenticated
+```
+
+### Deploy with Cloud Build image
+
+```bash
+gcloud builds submit --config cloudbuild.yaml --substitutions _IMAGE=gcr.io/<PROJECT_ID>/anwaccounting
+
+gcloud run deploy anwaccounting \
+  --image gcr.io/<PROJECT_ID>/anwaccounting \
+  --region <YOUR_REGION> \
+  --platform managed \
+  --allow-unauthenticated
+```
