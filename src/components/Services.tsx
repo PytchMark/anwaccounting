@@ -12,7 +12,7 @@ const services = [
     title: "Bookkeeping & Payroll",
     description: "Accurate records and timely payroll processing so your team stays happy.",
     icon: Calculator,
-    color: "bg-indigo-50 text-indigo-600"
+    color: "bg-sky-50 text-sky-600"
   },
   {
     title: "Business Registration",
@@ -24,7 +24,7 @@ const services = [
     title: "Financial Analysis",
     description: "Cash flows, projections, and variance analysis to guide your decisions.",
     icon: BarChart3,
-    color: "bg-purple-50 text-purple-600"
+    color: "bg-blue-50 text-blue-700"
   },
   {
     title: "Audit & Compliance",
@@ -56,7 +56,7 @@ export default function Services() {
             <motion.div
               key={idx}
               whileHover={{ y: -5 }}
-              className="p-8 rounded-3xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300"
+              className="p-8 rounded-3xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
             >
               <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${service.color}`}>
                 <service.icon className="w-6 h-6" />
