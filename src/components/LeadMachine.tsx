@@ -48,7 +48,7 @@ export default function LeadMachine() {
     setIsSubmitted(true);
     
     // Construct WhatsApp message
-    const message = `Hi ANW Accounting! My name is ${data.name}. I'm a ${data.businessType} looking for ${data.service}. You can reach me at ${data.email}.`;
+    const message = `Hi MoneyUp Consulting! My name is ${data.name}. I'm a ${data.businessType} looking for ${data.service}. You can reach me at ${data.email}.`;
     const whatsappNumber = "18761234567"; // Placeholder
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
@@ -79,13 +79,13 @@ export default function LeadMachine() {
                   <div key={step.id} className="relative z-10 flex flex-col items-center">
                     <div className={cn(
                       "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300",
-                      idx <= currentStep ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-400"
+                      idx <= currentStep ? "bg-blue-700 text-white" : "bg-slate-100 text-slate-400"
                     )}>
                       {idx < currentStep ? <CheckCircle2 className="w-6 h-6" /> : <step.icon className="w-5 h-5" />}
                     </div>
                     <span className={cn(
                       "text-xs font-medium mt-2 hidden md:block",
-                      idx <= currentStep ? "text-indigo-600" : "text-slate-400"
+                      idx <= currentStep ? "text-blue-700" : "text-slate-400"
                     )}>
                       {step.title}
                     </span>
@@ -113,8 +113,8 @@ export default function LeadMachine() {
                             nextStep();
                           }}
                           className={cn(
-                            "p-4 rounded-xl border-2 text-left transition-all hover:border-indigo-600 hover:bg-indigo-50",
-                            selectedService === service ? "border-indigo-600 bg-indigo-50" : "border-slate-100"
+                            "p-4 rounded-xl border-2 text-left transition-all hover:border-sky-600 hover:bg-sky-50",
+                            selectedService === service ? "border-sky-600 bg-sky-50" : "border-slate-100"
                           )}
                         >
                           {service}
@@ -143,8 +143,8 @@ export default function LeadMachine() {
                             nextStep();
                           }}
                           className={cn(
-                            "p-4 rounded-xl border-2 text-left transition-all hover:border-indigo-600 hover:bg-indigo-50",
-                            selectedBusinessType === type ? "border-indigo-600 bg-indigo-50" : "border-slate-100"
+                            "p-4 rounded-xl border-2 text-left transition-all hover:border-sky-600 hover:bg-sky-50",
+                            selectedBusinessType === type ? "border-sky-600 bg-sky-50" : "border-slate-100"
                           )}
                         >
                           {type}
@@ -175,7 +175,7 @@ export default function LeadMachine() {
                         <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
                         <input
                           {...register('name', { required: true })}
-                          className="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-600 outline-none"
+                          className="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-700 outline-none"
                           placeholder="John Doe"
                         />
                       </div>
@@ -183,7 +183,7 @@ export default function LeadMachine() {
                         <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
                         <input
                           {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-                          className="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-600 outline-none"
+                          className="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-700 outline-none"
                           placeholder="john@example.com"
                         />
                       </div>
@@ -198,7 +198,7 @@ export default function LeadMachine() {
                       </button>
                       <button 
                         type="submit"
-                        className="flex-1 bg-indigo-600 text-white p-4 rounded-xl font-semibold hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2"
+                        className="flex-1 bg-blue-700 text-white p-4 rounded-xl font-semibold hover:bg-blue-800 transition-all flex items-center justify-center gap-2 border-2 border-sky-400 shadow-lg shadow-blue-700/30 hover:shadow-blue-500/50"
                       >
                         Get Started <ChevronRight className="w-5 h-5" />
                       </button>
@@ -213,12 +213,12 @@ export default function LeadMachine() {
               animate={{ opacity: 1, scale: 1 }}
               className="text-center py-12"
             >
-              <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-700/25">
                 <CheckCircle2 className="w-12 h-12" />
               </div>
               <h3 className="text-2xl font-bold mb-2">Information Captured!</h3>
               <p className="text-slate-600 mb-8">Redirecting you to WhatsApp to start your consultation...</p>
-              <div className="animate-pulse text-indigo-600 font-medium">Please wait...</div>
+              <div className="animate-pulse text-blue-700 font-medium">Please wait...</div>
             </motion.div>
           )}
         </div>

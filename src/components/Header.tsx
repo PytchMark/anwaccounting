@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Menu, X, Calculator } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import WhatsAppCTA from './WhatsAppCTA';
+
+const logoUrl = 'https://res.cloudinary.com/dd8pjjxsm/image/upload/v1772770679/ChatGPT_Image_Mar_5_2026_11_17_41_PM_anl8wc.png';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,17 +20,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
-              <Calculator className="text-white w-6 h-6" />
-            </div>
-            <span className="text-xl font-bold text-slate-900 tracking-tight font-display">ANW Accounting</span>
+            <img src={logoUrl} alt="MoneyUp Consulting logo" className="w-10 h-10 rounded-xl object-cover ring-1 ring-blue-900/20" />
+            <span className="text-xl font-bold text-slate-900 tracking-tight font-display">MoneyUp Consulting</span>
           </div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">About</a>
-            <a href="#services" className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Services</a>
-            <a href="#get-started" className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Pricing</a>
+            <a href="#" className="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">About</a>
+            <a href="#services" className="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">Services</a>
+            <a href="#get-started" className="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">Pricing</a>
             <WhatsAppCTA className="px-5 py-2.5 text-sm" />
           </nav>
 

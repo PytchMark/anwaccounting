@@ -7,8 +7,16 @@ export default function Hero() {
     <section className="relative pt-32 pb-20 overflow-hidden">
       {/* Background Accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-50 rounded-full blur-3xl opacity-50" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-3xl opacity-50" />
+        <motion.div
+          animate={{ x: [0, 30, 0], y: [0, -25, 0] }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-sky-100 rounded-full blur-3xl opacity-50"
+        />
+        <motion.div
+          animate={{ x: [0, -35, 0], y: [0, 20, 0] }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-100 rounded-full blur-3xl opacity-50"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,12 +26,12 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-50 rounded-full">
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-blue-700 uppercase bg-sky-50 rounded-full">
               Trusted Accounting Partners
             </span>
             <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8 font-display">
               Expert Accounting <br />
-              <span className="text-indigo-600">Built for Growth.</span>
+              <span className="text-blue-700">Built for Growth.</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl text-slate-600 mb-10 leading-relaxed">
               We handle your bookkeeping, taxes, and compliance so you can focus on scaling your business. Professional, honest, and precise.
@@ -33,7 +41,7 @@ export default function Hero() {
               <WhatsAppCTA className="w-full sm:w-auto text-lg px-8 py-4" />
               <a 
                 href="#get-started"
-                className="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-slate-700 border border-slate-200 hover:bg-slate-50 transition-colors"
+                className="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-slate-700 border-2 border-blue-700 hover:bg-sky-50 shadow-lg shadow-blue-700/20 hover:shadow-blue-500/35 transition-all"
               >
                 Get a Free Quote
               </a>
@@ -54,7 +62,7 @@ export default function Hero() {
               { icon: Award, label: "Certified Experts" }
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center gap-2">
-                <item.icon className="w-6 h-6 text-indigo-600" />
+                <item.icon className="w-6 h-6 text-blue-700" />
                 <span className="text-sm font-medium text-slate-500 uppercase tracking-wider">{item.label}</span>
               </div>
             ))}
