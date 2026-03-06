@@ -37,7 +37,13 @@ export default function App() {
         <Hero />
         
         {/* Trust Section */}
-        <section className="py-12 bg-slate-50 border-y border-slate-100">
+        <motion.section
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="py-10 sm:py-12 bg-slate-50 border-y border-slate-100"
+        >
           <div className="max-w-7xl mx-auto px-4 overflow-hidden">
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
               {/* Placeholder logos for trust */}
@@ -48,7 +54,7 @@ export default function App() {
               <span className="text-2xl font-bold tracking-tighter">STARTUP.IO</span>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         <Services />
         
@@ -56,12 +62,18 @@ export default function App() {
         <LeadMachine />
 
         {/* Testimonial Section */}
-        <section className="py-24 bg-white overflow-hidden">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-16 sm:py-24 bg-white overflow-hidden"
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-blue-700 rounded-[3rem] p-12 md:p-20 relative overflow-hidden">
+            <div className="bg-blue-700 rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 md:p-20 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
               <div className="relative z-10 max-w-3xl">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
                   "MoneyUp Consulting transformed our messy books into a clear roadmap for growth."
                 </h2>
                 <div className="flex items-center gap-4">
@@ -74,13 +86,19 @@ export default function App() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Final CTA Section */}
-        <section className="py-24 bg-slate-50">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-16 sm:py-24 bg-slate-50"
+        >
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-6">Ready to simplify your finances?</h2>
-            <p className="text-xl text-slate-600 mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to simplify your finances?</h2>
+            <p className="text-lg sm:text-xl text-slate-600 mb-10">
               Join hundreds of Jamaican businesses that trust MoneyUp Consulting for their financial success.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -88,7 +106,7 @@ export default function App() {
               <a href="#get-started" className="text-blue-700 font-bold hover:underline">Or get a custom quote first →</a>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       <Footer />

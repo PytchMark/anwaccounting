@@ -1,10 +1,47 @@
 import { motion } from 'motion/react';
+import { useEffect, useMemo, useState } from 'react';
 import { ShieldCheck, TrendingUp, Clock, Award } from 'lucide-react';
 import WhatsAppCTA from './WhatsAppCTA';
 
 export default function Hero() {
+  const rotatingPhrases = useMemo(() => [
+    'Built for Growth.',
+    'Designed for Profit.',
+    'Engineered for Clarity.'
+  ], []);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [typedText, setTypedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = rotatingPhrases[phraseIndex];
+    const isPhraseDone = typedText === currentPhrase;
+    const isPhraseCleared = typedText.length === 0;
+
+    let timeoutMs = isDeleting ? 45 : 90;
+    if (!isDeleting && isPhraseDone) timeoutMs = 1400;
+    if (isDeleting && isPhraseCleared) timeoutMs = 250;
+
+    const timer = window.setTimeout(() => {
+      if (!isDeleting && !isPhraseDone) {
+        setTypedText(currentPhrase.slice(0, typedText.length + 1));
+      } else if (!isDeleting && isPhraseDone) {
+        setIsDeleting(true);
+      } else if (isDeleting && !isPhraseCleared) {
+        setTypedText(currentPhrase.slice(0, typedText.length - 1));
+      } else {
+        setIsDeleting(false);
+        setPhraseIndex((prev) => (prev + 1) % rotatingPhrases.length);
+      }
+    }, timeoutMs);
+
+    return () => window.clearTimeout(timer);
+  }, [isDeleting, phraseIndex, rotatingPhrases, typedText]);
+
+  const words = 'We handle your bookkeeping, taxes, and compliance so you can focus on scaling your business.'.split(' ');
+
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
+    <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden">
       {/* Background Accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
         <motion.div
@@ -29,13 +66,33 @@ export default function Hero() {
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-blue-700 uppercase bg-sky-50 rounded-full">
               Trusted Accounting Partners
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8 font-display">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-6 sm:mb-8 font-display leading-tight">
               Expert Accounting <br />
-              <span className="text-blue-700">Built for Growth.</span>
+              <span className="text-blue-700 inline-flex items-center min-h-[1.2em]">
+                {typedText}
+                <span className="ml-1 inline-block h-[1em] w-[2px] bg-blue-700 animate-pulse" aria-hidden="true" />
+              </span>
             </h1>
-            <p className="max-w-2xl mx-auto text-xl text-slate-600 mb-10 leading-relaxed">
-              We handle your bookkeeping, taxes, and compliance so you can focus on scaling your business. Professional, honest, and precise.
-            </p>
+            <motion.p
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.03 } }
+              }}
+              className="max-w-2xl mx-auto text-base sm:text-xl text-slate-600 mb-10 leading-relaxed"
+            >
+              {words.map((word, idx) => (
+                <motion.span
+                  key={`${word}-${idx}`}
+                  variants={{ hidden: { opacity: 0, y: 6 }, show: { opacity: 1, y: 0 } }}
+                  className="inline-block mr-1"
+                >
+                  {word}
+                </motion.span>
+              ))}
+              <span className="inline-block ml-1">Professional, honest, and precise.</span>
+            </motion.p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <WhatsAppCTA className="w-full sm:w-auto text-lg px-8 py-4" />
